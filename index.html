@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .mySlides {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+
+  justify-content: center;
+  align-items: center;
+}
+    .mySlides img {
+      width: 100%;
+      height: 600px;
+      object-fit: contain;
+    }
+
+    .button-container {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  </style>
+  <body style="overflow-y: hidden">
+    <div class="mySlides">
+      <img src="Home1.gif" style="display: block" />
+      <img src="Home2.png" style="display: none" />
+    </div>
+    <div class="mySlides">
+      <img src="Schedule1.gif" style="display: block" />
+      <img src="Schedule2.png" style="display: none" />
+    </div>
+    <div class="mySlides">
+      <img src="MedicalRecord1.gif" style="display: block" />
+      <img src="MedicalRecord2.png" style="display: none" />
+    </div>
+    <div class="mySlides">
+      <img src="Appointment1.gif" style="display: block" />
+      <img src="Appointment2.png" style="display: none" />
+    </div>
+    <div class="mySlides">
+      <img src="ActivityManagement1.gif" style="display: block" />
+      <img src="ActivityManagement2.png" style="display: none" />
+    </div>
+
+    <div class="button-container">
+        <button class="w3-button w3-display-left" onclick="plusDivs(-1)" style="height: 50px; width: 50px;">&#10094;</button>
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)" style="height: 50px; width: 50px;">&#10095;</button>
+      </div>
+  </body>
+  <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs((slideIndex += n));
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = x.length;
+      }
+
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+
+      var slideDiv = x[slideIndex - 1];
+      slideDiv.style.display = "block";
+
+      var gifImg = slideDiv.getElementsByTagName("img")[0];
+      var pngImg = slideDiv.getElementsByTagName("img")[1];
+
+      gifImg.style.display = "block";
+      pngImg.style.display = "none";
+
+      setTimeout(function () {
+        gifImg.style.display = "none";
+        pngImg.style.display = "block";
+      }, 900); // Display GIF for 5 seconds (5000 milliseconds)
+    }
+  </script>
+</html>
